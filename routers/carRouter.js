@@ -2,7 +2,6 @@ const express = require("express");
 const db = require("../dbConfig");
 const router = express.Router();
 
-// GET
 router.get("/", async (req, res) => {
   try {
     const cars = await db("cars");
@@ -12,7 +11,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET by id
 router.get("/:id", validateId, async (req, res) => {
   const { id } = req.params;
   try {
@@ -23,7 +21,6 @@ router.get("/:id", validateId, async (req, res) => {
   }
 });
 
-// CREATE
 router.post("/", async (req, res) => {
   const carData = req.body;
   try {
@@ -34,7 +31,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-// UPDATE by id
 router.put("/:id", validateId, async (req, res) => {
   const { id } = req.params;
   try {
@@ -45,7 +41,6 @@ router.put("/:id", validateId, async (req, res) => {
   }
 });
 
-// DELETE by id
 router.delete("/:id", validateId, async (req, res) => {
   const { id } = req.params;
   try {
